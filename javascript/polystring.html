@@ -1,0 +1,28 @@
+<html>
+	
+	<head>
+		<title>Polystring</title>
+		<script type="text/javascript" src="polystring.js"></script>
+		<script type="text/javascript">
+			Polystring.identifier = navigator.language || navigator.userLanguage
+			
+			function Usage()
+			{
+				var greetings = Polystring("fr\\Bonjour\0  it\\Ciao\0  Hello")
+				
+				document.open();
+				document.write(greetings, " -- ", Polystring.identifier, "<br/>")
+				document.write(greetings.to("fr_FR"), "<br/>")
+				document.write(greetings.to("it_IT"), "<br/>")
+				document.write(greetings.to("en_US"), "<br/>")
+				document.close();
+			}
+		</script>
+	</head>
+	
+	<body onload="Usage()">
+		<p>...</p>
+		<noscript>requires javascript</noscript>
+	</body>	
+	
+</html>
