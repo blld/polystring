@@ -20,60 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-import Foundation
-
-struct Polystring {
-	
-	static var identifier = Locale.current.identifier
-	
-	let raw : String
-	
-	init(_ raw: String) {
-		self.raw = raw
-	}
-	
-	var locale: String {
-		return self.to(Polystring.identifier)
-	}
-	
-	func to(_ target: String) -> String {
-		var text = raw[raw.startIndex...]
-		while let separator = text.firstIndex(of: "\\") {
-			var end = text.firstIndex(of: "\0") ?? text.endIndex
-			let identifier = text.prefix(upTo: separator)
-			if identifier == target.prefix(identifier.count) {
-				return String(text[text.index(after: separator)..<end])
-			} else {
-				repeat {
-					text = text[text.index(after: end)...]
-					end = text.startIndex
-				} while text.prefix(1) == " "
-			}
-		}
-		return String(text)
-	}
-	
-}
-
-extension Polystring: Decodable {
-	init(from decoder: Decoder) throws {
-		self.raw = try String.init(from: decoder)
-	}
-}
-
-extension Polystring: Encodable {
-	func encode(to encoder: Encoder) throws {
-		try self.raw.encode(to: encoder)
-	}
-}
-
-extension Polystring: CustomStringConvertible {
-	var description: String {
-		return self.locale
-	}
-}
-
-// Usage
+// Usage; see Polystring.playground/Sources/Polystring.swift for implementation
 
 let greetings = Polystring("fr\\Bonjour\0  it\\Ciao\0  Hello")
 
