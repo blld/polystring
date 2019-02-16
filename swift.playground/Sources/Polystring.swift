@@ -26,7 +26,7 @@ public struct Polystring {
 	
 	public static var identifier = Locale.current.identifier
 	
-	let raw : String
+	public let raw : String
 	
 	public init(_ raw: String) {
 		self.raw = raw

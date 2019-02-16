@@ -4,7 +4,7 @@
 		<title>Polystring</title>
 		<script type="text/javascript" src="polystring.js"></script>
 		<script type="text/javascript">
-			Polystring.identifier = navigator.language || navigator.userLanguage
+			Polystring.identifier = navigator.language || navigator.userLanguage || Polystring.identifier
 			
 			function Usage()
 			{
@@ -15,6 +15,8 @@
 				document.write(greetings.to("fr_FR"), "<br/>")
 				document.write(greetings.to("it_IT"), "<br/>")
 				document.write(greetings.to("en_US"), "<br/>")
+				
+				document.write("raw: ", greetings.raw, "<br/>")
 				document.close();
 			}
 		</script>

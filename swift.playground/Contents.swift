@@ -20,7 +20,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-// Usage; see Polystring.playground/Sources/Polystring.swift for implementation
+// see Polystring.playground/Sources/Polystring.swift for implementation
+
+// Usage
+
+import Foundation 
 
 let greetings = Polystring("fr\\Bonjour\0  it\\Ciao\0  Hello")
 
@@ -28,3 +32,5 @@ print(greetings, "--", Polystring.identifier)
 print(greetings.to("fr_FR"))
 print(greetings.to("it_IT"))
 print(greetings.to("en_US"))
+
+print("raw:", greetings.raw)
