@@ -23,9 +23,7 @@ int main(int argc, char *argv[])
 		int i, c;
 		printf("raw: ");
 		for (i = 0, c = sizeof(greetings)-1; i < c; ++i) {
-			if (greetings[i] == '\\')
-				printf("\\");
-			else
+			if (greetings[i] != '\0')
 				putchar(greetings[i]);
 		}
 		putchar('\n');
