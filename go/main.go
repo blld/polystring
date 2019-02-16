@@ -7,10 +7,11 @@ import (
 )
 
 func main() {
-	Polystring.Identifier = os.Getenv("LANG")
+	if (os.Getenv("LANG") != "") {
+		Polystring.Identifier = os.Getenv("LANG")
+	}
 	
-	// Usage
-	// Note: \0 is not supported in Go and must be replaced by \x00
+	// Usage (\0 is \x00 in Go)
 	
 	greetings := Polystring.New("fr\\Bonjour\x00  it\\Ciao\x00  Hello")
 	
